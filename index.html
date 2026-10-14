@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ff">
+  <meta name="description" content="Kết nối với mình trên TikTok, Instagram, Facebook và Zalo.">
+  <title>BIO | Kết nối với mình</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px;
+      color: #28243a;
+      background: #f7f3ff;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: -20%;
+      content: "";
+      background:
+        radial-gradient(ellipse at 20% 25%, #ffe2e9 0, transparent 34%),
+        radial-gradient(ellipse at 78% 72%, #dcd8ff 0, transparent 38%),
+        radial-gradient(ellipse at 78% 18%, #f4dcff 0, transparent 30%);
+      animation: background-drift 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    body::after {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0.28;
+      background-image: radial-gradient(#8f7bb8 0.7px, transparent 0.7px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(135deg, black, transparent 72%);
+    }
+
+    @keyframes background-drift {
+      from {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+      }
+      to {
+        transform: translate3d(2%, 1%, 0) scale(1.08);
+      }
+    }
+
+    .bio-card {
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 480px);
+      padding: 48px 36px 32px;
+      text-align: center;
+      background: rgb(255 255 255 / 76%);
+      border: 1px solid rgb(255 255 255 / 92%);
+      border-radius: 32px;
+      box-shadow:
+        0 32px 80px rgb(67 47 108 / 15%),
+        0 4px 14px rgb(67 47 108 / 5%),
+        inset 0 1px 0 rgb(255 255 255 / 95%);
+      backdrop-filter: blur(20px);
+    }
+
+    .bio-card::before {
+      position: absolute;
+      top: 0;
+      left: 14%;
+      width: 72%;
+      height: 3px;
+      content: "";
+      background: linear-gradient(90deg, transparent, #ff91ad, #947bff, transparent);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .avatar {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 23px;
+      color: white;
+      font-size: 42px;
+      font-weight: 800;
+      object-fit: cover;
+      background: linear-gradient(145deg, #ff829d 8%, #bc78e8 55%, #7f7aff);
+      border: 5px solid rgb(255 255 255 / 94%);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 5px rgb(151 121 231 / 12%),
+        0 12px 28px rgb(137 105 221 / 28%);
+    }
+
+    h1 {
+      margin: 0;
+      color: #29243b;
+      font-size: clamp(28px, 7vw, 34px);
+      font-weight: 760;
+      letter-spacing: -0.9px;
+    }
+
+    .bio {
+      margin: 12px 0 32px;
+      color: #777287;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .links {
+      display: grid;
+      gap: 15px;
+    }
+
+    .social-link {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      padding: 13px 19px;
+      color: #302d3d;
+      font-size: 17px;
+      font-weight: 680;
+      text-align: left;
+      text-decoration: none;
+      background: rgb(255 255 255 / 88%);
+      border: 1px solid rgb(231 227 240 / 90%);
+      border-radius: 18px;
+      box-shadow: 0 3px 8px rgb(49 38 82 / 3%);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      border-color: #d7cafa;
+      background: white;
+      box-shadow: 0 12px 24px rgb(68 52 111 / 10%);
+    }
+
+    .social-link:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .social-link:nth-child(1):hover { border-color: #bcb7c8; }
+    .social-link:nth-child(2):hover { border-color: #f1b7d4; }
+    .social-link:nth-child(3):hover { border-color: #a9ccff; }
+    .social-link:nth-child(4):hover { border-color: #a9d4ff; }
+
+    .social-link > span:nth-child(2) {
+      letter-spacing: 0.1px;
+    }
+
+    .social-link:focus-visible {
+      outline: 3px solid #8b72e8;
+      outline-offset: 3px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 750;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 1px rgb(255 255 255 / 24%);
+    }
+
+    .tiktok { background: #171717; }
+    .instagram { background: linear-gradient(140deg, #ffd776, #ff665f 48%, #bd48b8 78%, #6558d9); }
+    .facebook { background: #1877f2; font-family: Arial, sans-serif; font-size: 26px; }
+    .zalo { background: #087ff5; font-size: 12px; letter-spacing: -0.6px; }
+
+    .arrow {
+      margin-left: auto;
+      color: #aaa5b7;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .payment {
+      margin-top: 28px;
+      padding: 22px 18px 20px;
+      background: rgb(255 255 255 / 58%);
+      border: 1px solid rgb(231 227 240 / 90%);
+      border-radius: 22px;
+    }
+
+    .payment h2 {
+      margin: 0;
+      color: #302b42;
+      font-size: 19px;
+      font-weight: 730;
+      letter-spacing: -0.3px;
+    }
+
+    .payment-note {
+      margin: 6px 0 16px;
+      color: #777287;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .qr-image {
+      display: block;
+      width: min(100%, 250px);
+      height: auto;
+      margin: 0 auto;
+      padding: 10px;
+      background: white;
+      border: 1px solid #efedf4;
+      border-radius: 18px;
+      box-shadow: 0 8px 22px rgb(49 38 82 / 8%);
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #a19caf;
+      font-size: 13px;
+      letter-spacing: 0.15px;
+    }
+
+    @media (max-width: 360px) {
+      .bio-card {
+        padding: 38px 20px 25px;
+        border-radius: 26px;
+      }
+
+      .social-link {
+        min-height: 62px;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before {
+        animation: none;
+      }
+
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="bio-card">
+    <img class="avatar" src="avatar.jpg" alt="Ảnh đại diện của bạn">
+    <h1>Lã Danh Nghĩa</h1>
+    <p class="bio">Xin chào! Đây là nơi kết nối với mình ✨</p>
+
+    <nav class="links" aria-label="Các trang mạng xã hội">
+      <a class="social-link" href="https://www.tiktok.com/@zomsimp" target="_blank" rel="noopener noreferrer">
+        <span class="icon tiktok" aria-hidden="true">J</span>
+        <span>TikTok</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link" href="https://www.facebook.com/danh.nghia8208" target="_blank" rel="noopener noreferrer">
+        <span class="icon facebook" aria-hidden="true">f</span>
+        <span>Facebook</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link" href="https://zalo.me/0968693711" target="_blank" rel="noopener noreferrer">
+        <span class="icon zalo" aria-hidden="true">Zalo</span>
+        <span>Zalo</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <section class="payment" aria-labelledby="payment-title">
+      <h2 id="payment-title">QR ngân hàng</h2>
+      <p class="payment-note">Quét mã để chuyển khoản cho mình 💜</p>
+      <img class="qr-image" src="QR.jpg" alt="Mã QR ngân hàng để chuyển khoản">
+    </section>
+
+    <footer>Rất vui vì bạn ghé qua 💜</footer>
+  </main>
+</body>
+</html>
